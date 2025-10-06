@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Gerador de Palpites da Quina — 516 Sul</title>
+
+<meta property="og:title" content="Gerador de Palpites da Quina — 516 Sul">
+<meta property="og:description" content="Gere 5 ou 6 dezenas (1–80). Venha apostar na Lotérica 516 Sul — bolões, vendas online e WhatsApp!">
+<meta name="theme-color" content="#0A3D91">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet"/>
+
+<style>
+  :root{
+    --bg: #0A3D91;        /* azul fundo */
+    --azul: #005CAA;      /* azul caixas/botão */
+    --azul-esc: #07356F;  /* azul escuro componentes */
+    --azul-esc-2:#052a59; /* ainda mais escuro */
+    --laranja:#F39200;    /* acento */
+    --texto:#FFFFFF;
+
+    --card-bg: rgba(255,255,255,.08);
+    --card-br: rgba(255,255,255,.16);
+
+    --trevo1:#8E6BD8; --trevo2:#B39AF0; --trevo3:#5429A3; --trevo4:#3D2E92;
+
+    --bola-1:#1b54b1; --bola-2:#0d2a6f;
+  }
+
+  /* >>> Essas regras precisam ficar FORA do :root <<< */
+  h3 { 
+    text-align: center; 
+  }
+  .destaque-loterica {
+    font-size: 2rem;   /* aumenta só o texto “Lotérica 516 Sul” */
+    color: #fff;
+    font-weight: 900;
+  }
+  /* Centralização do card de propaganda */
+  .promo {
+    display: grid;
+    gap: 10px;
+    text-align: center;      /* centraliza os textos */
+    justify-items: center;   /* centraliza elementos */
+  }
+  .promo p { text-align: center; margin: 4px 0; }
+  .promo .grid-2 {           /* mantém duas colunas, mas centralizadas */
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+
+  *{box-sizing:border-box} html,body{height:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--texto);
+    font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    overflow-x:hidden;
+  }
+
+  /* Fundo com trevos discretos */
+  .bg{position:fixed;inset:0;pointer-events:none;opacity:.12;
+    background-image:url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140">\
+<g>\
+<circle cx="45" cy="45" r="22" fill="%238E6BD8"/>\
+<circle cx="95" cy="45" r="22" fill="%23B39AF0"/>\
+<circle cx="45" cy="95" r="22" fill="%235429A3"/>\
+<circle cx="95" cy="95" r="22" fill="%233D2E92"/>\
+</g></svg>');
+    background-size:140px 140px; animation:float 26s linear infinite;
+  }
+  @keyframes float{to{transform:translateY(-140px)}}
+
+  .wrap{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:24px;display:grid;gap:18px}
+
+  .card{
+    background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.06));
+    border:1px solid var(--card-br);
+    border-radius:16px; padding:18px;
+    box-shadow:0 8px 24px rgba(0,0,0,.35);
+  }
+
+  /* CARD 1 — GERADOR */
+  .title{display:flex;align-items:center;gap:8px;justify-content:center;text-align:center}
+  .title h1{margin:0;font-size:1.9rem}
+  .subtitle{text-align:center;opacity:.95;margin-top:6px}
+
+  .controls{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  label{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);padding:10px 12px;border-radius:10px}
+
+  /* Selects com fundo AZUL ESCURO (inclusive lista aberta) */
+  select{
+    appearance:none;-webkit-appearance:none;-moz-appearance:none;
+    background:linear-gradient(180deg,var(--azul-esc),var(--azul-esc-2));
+    color:#fff;border:1px solid rgba(255,255,255,.18);
+    border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer;
+  }
+  select:focus{outline:2px solid rgba(255,255,255,.35)}
+  option{background:var(--azul-esc-2);color:#fff} /* fundo da lista aberta */
+
+  .btn{
+    border:none;border-radius:10px;padding:12px 16px;font-weight:800;cursor:pointer;
+    box-shadow:0 6px 0 #063b7a,0 12px 22px rgba(0,0,0,.35);
+    transition:transform .08s ease, filter .2s ease;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-blue{background:linear-gradient(180deg,#1372C8,var(--azul));color:#fff}
+  .btn-blue:hover{filter:brightness(1.06)}
+  .btn-orange{background:linear-gradient(180deg,#ffc766,var(--laranja));color:#3f2f00;box-shadow:0 6px 0 #b37400,0 12px 22px rgba(0,0,0,.25)}
+
+  .res{display:grid;gap:10px;margin-top:12px}
+  .jogo{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:rgba(255,255,255,.10);padding:12px;border-radius:12px}
+  .bola{min-width:42px;text-align:center;padding:8px 10px;border-radius:999px;font-weight:800;
+        background:radial-gradient(circle at 30% 30%,var(--bola-1),var(--bola-2)); color:#fff; letter-spacing:.5px}
+
+  /* CARD 3 — BOTÕES BOLÕES */
+  .cta-title{margin:0 0 10px;font-size:1.2rem}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;padding:12px 16px;border-radius:10px;font-weight:800;border:1px solid rgba(255,255,255,.16)}
+  .whats{background:#25d366;color:#083b1e}
+  .maps{background:#1a73e8;color:#fff}
+
+  /* CARD 4 — RODAPÉ */
+  .footer{text-align:center;opacity:.9}
+
+  @media (max-width:740px){
+    .promo .grid-2{grid-template-columns:1fr} /* 1 coluna no mobile */
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+
+<main class="wrap">
+  <!-- CARD 1: GERADOR -->
+  <section class="card" aria-labelledby="titulo-gerador">
+    <div class="title">
+      <div style="font-size:1.4rem">🍀</div>
+      <h1 id="titulo-gerador">Gerador de Palpites da Quina</h1>
+    </div>
+    <p class="subtitle">Gere <strong>5 ou 6 dezenas</strong> entre 1 e 80 e aposte com a sorte da <strong>Lotérica 516 Sul</strong>!</p>
+
+    <div class="controls">
+      <label>Tipo:
+        <select id="tipo" aria-label="Tipo de jogo">
+          <option value="5" selected>5 dezenas</option>
+          <option value="6">6 dezenas</option>
+        </select>
+      </label>
+      <label>Quantidade:
+        <select id="qtd" aria-label="Quantidade de jogos">
+          <option value="1">1 jogo</option>
+          <option value="5">5 jogos</option>
+          <option value="10">10 jogos</option>
+          <option value="15">15 jogos</option>
+        </select>
+      </label>
+      <button class="btn btn-blue" id="gerar" type="button">Gerar palpite</button>
+      <button class="btn btn-orange" id="limpar" type="button">Limpar</button>
+    </div>
+
+    <div class="res" id="saida" aria-live="polite"></div>
+  </section>
+
+    <!-- CARD 2: PROPAGANDA (versão simplificada e centralizada) -->
+  <section class="card promo" style="text-align:center;">
+    <h3 class="destaque-loterica" style="font-size:2.4rem;margin:0;">LOTÉRICA 516 SUL</h3>
+    <p style="font-size:1.4rem;margin:4px 0 18px;font-weight:600;">Venha apostar com a gente!</p>
+
+    <div style="max-width:600px;margin:0 auto;">
+      <p><strong>Endereço:</strong><br>
+        W3 Sul, Quadra 516 — Bloco A, Loja 45<br>
+        (entre Americanas e Pão de Açúcar)
+      </p>
+
+      <p><strong>Horário:</strong><br>
+        Segunda a Sexta: <strong>08:00 – 18:30</strong><br>
+        Sábados: <strong>08:00 – 14:30</strong>
+      </p>
+
+      <p style="margin-top:12px;">
+        ✨ <em>Aproveite nossos bolões!</em><br>
+        Vendemos online na plataforma oficial <strong>Loterias CAIXA</strong>.<br>
+        No filtro, digite <strong>“Lotérica 516 Sul”</strong>.<br>
+        Também atendemos pelo <strong>WhatsApp</strong>!
+      </p>
+    </div>
+  </section>
+
+  <!-- CARD 3: CTA BOLÕES -->
+  <section class="card">
+    <h3 class="cta-title">Aproveite nossos Bolões!</h3>
+    <div class="actions">
+      <a class="link whats" target="_blank" rel="noopener"
+         href="https://wa.me/5561999310369?text=Ol%C3%A1%2C+vim+pelo+Gerador+de+Palpites+da+Quina+%28516+Sul%29.+Quero+apostar%21">
+         💬 WhatsApp 516 Sul
+      </a>
+      <a class="link maps" target="_blank" rel="noopener"
+         href="https://maps.app.goo.gl/rbKWiowhMUj1w7za8">
+         📍 Como chegar
+      </a>
+    </div>
+  </section>
+
+  <!-- CARD 4: RODAPÉ -->
+  <footer class="card footer">
+    <div><strong>Lotérica 516 Sul</strong> — W3 Sul, Quadra 516 — Bloco A, Loja 45 • (61) 99931-0369</div>
+    <div style="opacity:.85;margin-top:6px">© <span id="ano"></span> 516 Sul • Boa sorte e bons prêmios! 🍀</div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  const MAX=80;
+  const tipo=document.getElementById('tipo');
+  const qtd=document.getElementById('qtd');
+  const gerar=document.getElementById('gerar');
+  const limpar=document.getElementById('limpar');
+  const saida=document.getElementById('saida');
+  const ano=document.getElementById('ano'); if(ano) ano.textContent=new Date().getFullYear();
+
+  function jogo(qtde){
+    const s=new Set();
+    while(s.size<qtde) s.add(Math.floor(Math.random()*MAX)+1);
+    return [...s].sort((a,b)=>a-b);
+  }
+
+  function gerarVarios(){
+    const n=parseInt(tipo.value,10);
+    const total=parseInt(qtd.value,10);
+    const jogos=[];
+    for(let i=0;i<total;i++) jogos.push(jogo(n));
+    render(jogos);
+  }
+
+  function render(jogos){
+    saida.innerHTML='';
+    if(!jogos.length){
+      const m=document.createElement('div');
+      m.style.opacity='.85'; m.textContent='Nenhum palpite gerado ainda.';
+      saida.appendChild(m); return;
+    }
+    jogos.forEach(nums=>{
+      const div=document.createElement('div'); div.className='jogo';
+      nums.forEach(n=>{
+        const b=document.createElement('span'); b.className='bola';
+        b.textContent=String(n).padStart(2,'0'); div.appendChild(b);
+      });
+      saida.appendChild(div);
+    });
+  }
+
+  gerar.addEventListener('click',gerarVarios);
+  limpar.addEventListener('click',()=>render([]));
+  render([]);
+})();
+</script>
+</body>
+</html>
